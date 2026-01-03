@@ -1,0 +1,14 @@
+# Core framework-
+fastapi
+uvicorn
+
+# Database (Supabase PostgreSQL)-
+sqlalchemy
+psycopg2-binary
+
+# Environment variables-
+python-dotenv
+
+# Auth (future use)-
+python-jose
+passlib[bcrypt]
