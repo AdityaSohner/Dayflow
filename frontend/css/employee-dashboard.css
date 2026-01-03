@@ -1,0 +1,98 @@
+/* Employee Dashboard (DayFlow) - page-specific styles */
+
+.welcome {
+	margin: 1.5rem 0 1.25rem;
+}
+
+.welcome-title {
+	margin: 0 0 0.25rem;
+	font-size: 2rem;
+	font-weight: 800;
+	color: var(--dark);
+}
+
+.welcome-subtitle {
+	margin: 0;
+	color: var(--gray);
+	font-weight: 600;
+}
+
+.cards-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: var(--spacing-lg);
+	margin-bottom: var(--spacing-xl);
+}
+
+.cards-grid .card {
+	margin-bottom: 0;
+}
+
+.kv {
+	display: flex;
+	flex-direction: column;
+	gap: 0.85rem;
+}
+
+.kv-row {
+	display: flex;
+	gap: 1.25rem;
+	flex-wrap: wrap;
+}
+
+.kv-item {
+	min-width: 160px;
+}
+
+.kv-label {
+	font-size: 0.75rem;
+	font-weight: 900;
+	color: var(--gray);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	margin-bottom: 0.25rem;
+}
+
+.kv-value {
+	font-size: 1.25rem;
+	font-weight: 900;
+	color: var(--dark);
+}
+
+.kv-meta {
+	font-weight: 800;
+	color: var(--dark-light);
+	font-variant-numeric: tabular-nums;
+}
+
+.card-footer {
+	display: flex;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+}
+
+.card-footer .btn {
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+.access-banner {
+	display: none;
+	background: var(--danger-light);
+	border: 1px solid var(--danger);
+	border-radius: var(--radius-lg);
+	padding: 1rem 1.25rem;
+	margin: 1rem 0;
+	color: var(--danger);
+	font-weight: 900;
+}
+
+@media (max-width: 650px) {
+	.welcome-title {
+		font-size: 1.6rem;
+	}
+
+	.kv-item {
+		min-width: unset;
+	}
+}

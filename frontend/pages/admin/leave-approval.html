@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Leave Approval - DayFlow</title>
+
+	<!-- Reuse existing design tokens + navbar styles -->
+	<link rel="stylesheet" href="../../css/style.css" />
+	<link rel="stylesheet" href="../../css/admin-dashboard.css" />
+	<link rel="stylesheet" href="../../css/leave-approval.css" />
+</head>
+<body>
+	<!-- Navbar (same as admin dashboard; Time Off active) -->
+	<nav class="navbar">
+		<div class="navbar-left">
+			<img src="../../images/logo.png" alt="DayFlow Logo" style="height: 40px; width: auto;">
+		</div>
+
+		<div class="navbar-center">
+			<a href="dashboard.html" class="nav-tab">Employees</a>
+			<a href="attendance.html" class="nav-tab">Attendance</a>
+			<a href="leave-approval.html" class="nav-tab active">Time Off</a>
+		</div>
+
+		<div class="navbar-right">
+			<div class="status-indicator">
+				<span class="status-dot online"></span>
+				<span>Active</span>
+			</div>
+
+			<div class="user-menu">
+				<div class="user-avatar" onclick="toggleDropdown()">AD</div>
+				<div class="dropdown-menu" id="userDropdown">
+					<a href="#" class="dropdown-item" onclick="goToProfile()">My Profile</a>
+					<a href="#" class="dropdown-item" onclick="logout()">Logout</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="page-header">
+			<h1 class="page-title">Leave Approval</h1>
+			<p class="page-subtitle">Review and approve employee time off requests</p>
+		</div>
+
+		<div class="access-banner" id="accessBanner">
+			Employees cannot access this page.
+		</div>
+
+		<!-- Tabs + Top Actions -->
+		<div class="top-bar">
+			<div class="tabs" role="tablist" aria-label="Leave type tabs">
+				<button class="tab active" id="tabPaid" type="button">Paid Time Off</button>
+				<button class="tab" id="tabSick" type="button">Sick Time Off</button>
+			</div>
+
+			<div class="actions">
+				<div class="search-container" style="margin-bottom: 0; width: min(520px, 100%);">
+					<input
+						type="text"
+						id="searchInput"
+						class="search-input"
+						placeholder="Search employee name..."
+						autocomplete="off"
+					>
+				</div>
+			</div>
+		</div>
+
+		<!-- Leave Table -->
+		<div class="table-card" id="mainCard">
+			<table class="leave-table" aria-label="Leave requests table">
+				<thead>
+					<tr>
+						<th style="width: 22%;">Employee Name</th>
+						<th style="width: 12%;">Start Date</th>
+						<th style="width: 12%;">End Date</th>
+						<th style="width: 16%;">Time Off Type</th>
+						<th style="width: 14%;">Status</th>
+						<th style="width: 24%;">Actions</th>
+					</tr>
+				</thead>
+				<tbody id="leaveBody"></tbody>
+			</table>
+		</div>
+	</div>
+
+	<script src="../../js/leave-approval.js"></script>
+</body>
+</html>

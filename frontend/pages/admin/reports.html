@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Reports - DayFlow</title>
+
+	<link rel="stylesheet" href="../../css/reports.css" />
+			}
+		}
+	</style>
+</head>
+<body>
+	<!-- Navbar (same as admin dashboard) -->
+	<nav class="navbar">
+		<div class="navbar-left">
+			<img src="../../images/logo.png" alt="DayFlow Logo" style="height: 40px; width: auto;">
+		</div>
+
+		<div class="navbar-center">
+			<a href="dashboard.html" class="nav-tab">Employees</a>
+			<a href="attendance.html" class="nav-tab">Attendance</a>
+			<a href="leave-approval.html" class="nav-tab">Time Off</a>
+		</div>
+
+		<div class="navbar-right">
+			<div class="status-indicator">
+				<span class="status-dot online"></span>
+				<span>Active</span>
+			</div>
+
+			<div class="user-menu">
+				<div class="user-avatar" onclick="toggleDropdown()">AD</div>
+				<div class="dropdown-menu" id="userDropdown">
+					<a href="#" class="dropdown-item" onclick="goToProfile()">My Profile</a>
+					<a href="#" class="dropdown-item" onclick="logout()">Logout</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="page-header">
+			<h1 class="page-title">Reports Dashboard</h1>
+			<p class="page-subtitle">Quick admin summaries (UI only, dummy stats)</p>
+		</div>
+
+		<div class="reports-grid">
+			<!-- Attendance Summary -->
+			<div class="report-card">
+				<div class="report-card-header">
+					<h2 class="report-title">Attendance Summary</h2>
+					<div class="report-total">
+						<div class="total-label">Total Records</div>
+						<div class="total-value" id="attTotal">248</div>
+					</div>
+				</div>
+				<div class="report-body">
+					<div class="monthly-label">Monthly Overview</div>
+					<div class="mini-bars" aria-label="Monthly attendance overview (placeholder)">
+						<div class="bar" style="height: 45%;"></div>
+						<div class="bar" style="height: 55%;"></div>
+						<div class="bar" style="height: 52%;"></div>
+						<div class="bar" style="height: 60%;"></div>
+						<div class="bar" style="height: 66%;"></div>
+						<div class="bar" style="height: 72%;"></div>
+						<div class="bar" style="height: 64%;"></div>
+						<div class="bar" style="height: 70%;"></div>
+						<div class="bar" style="height: 78%;"></div>
+						<div class="bar" style="height: 73%;"></div>
+						<div class="bar" style="height: 80%;"></div>
+						<div class="bar" style="height: 76%;"></div>
+					</div>
+
+					<div class="kpi-row">
+						<div class="kpi">
+							<div class="kpi-k">Present Days</div>
+							<div class="kpi-v" id="attPresent">212</div>
+						</div>
+						<div class="kpi">
+							<div class="kpi-k">Absent Days</div>
+							<div class="kpi-v" id="attAbsent">24</div>
+						</div>
+						<div class="kpi">
+							<div class="kpi-k">Late Marks</div>
+							<div class="kpi-v" id="attLate">12</div>
+						</div>
+					</div>
+
+					<div class="report-actions">
+						<button class="btn-ghost" type="button" onclick="placeholderAction('Attendance', 'View')">View</button>
+						<button class="btn-ghost" type="button" onclick="placeholderAction('Attendance', 'Download')">Download</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Leave Summary -->
+			<div class="report-card">
+				<div class="report-card-header">
+					<h2 class="report-title">Leave Summary</h2>
+					<div class="report-total">
+						<div class="total-label">Total Requests</div>
+						<div class="total-value" id="leaveTotal">36</div>
+					</div>
+				</div>
+				<div class="report-body">
+					<div class="monthly-label">Monthly Overview</div>
+					<div class="mini-bars" aria-label="Monthly leave overview (placeholder)">
+						<div class="bar" style="height: 28%;"></div>
+						<div class="bar" style="height: 35%;"></div>
+						<div class="bar" style="height: 32%;"></div>
+						<div class="bar" style="height: 40%;"></div>
+						<div class="bar" style="height: 38%;"></div>
+						<div class="bar" style="height: 46%;"></div>
+						<div class="bar" style="height: 42%;"></div>
+						<div class="bar" style="height: 48%;"></div>
+						<div class="bar" style="height: 50%;"></div>
+						<div class="bar" style="height: 44%;"></div>
+						<div class="bar" style="height: 52%;"></div>
+						<div class="bar" style="height: 49%;"></div>
+					</div>
+
+					<div class="kpi-row">
+						<div class="kpi">
+							<div class="kpi-k">Approved</div>
+							<div class="kpi-v" id="leaveApproved">22</div>
+						</div>
+						<div class="kpi">
+							<div class="kpi-k">Pending</div>
+							<div class="kpi-v" id="leavePending">9</div>
+						</div>
+						<div class="kpi">
+							<div class="kpi-k">Rejected</div>
+							<div class="kpi-v" id="leaveRejected">5</div>
+						</div>
+					</div>
+
+					<div class="report-actions">
+						<button class="btn-ghost" type="button" onclick="placeholderAction('Leave', 'View')">View</button>
+						<button class="btn-ghost" type="button" onclick="placeholderAction('Leave', 'Download')">Download</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Payroll Summary -->
+			<div class="report-card">
+				<div class="report-card-header">
+					<h2 class="report-title">Payroll Summary</h2>
+					<div class="report-total">
+						<div class="total-label">Processed Runs</div>
+						<div class="total-value" id="payTotal">12</div>
+					</div>
+				</div>
+				<div class="report-body">
+					<div class="monthly-label">Monthly Overview</div>
+					<div class="mini-bars" aria-label="Monthly payroll overview (placeholder)">
+						<div class="bar" style="height: 52%;"></div>
+						<div class="bar" style="height: 58%;"></div>
+						<div class="bar" style="height: 56%;"></div>
+						<div class="bar" style="height: 62%;"></div>
+						<div class="bar" style="height: 65%;"></div>
+						<div class="bar" style="height: 70%;"></div>
+						<div class="bar" style="height: 68%;"></div>
+						<div class="bar" style="height: 72%;"></div>
+						<div class="bar" style="height: 75%;"></div>
+						<div class="bar" style="height: 73%;"></div>
+						<div class="bar" style="height: 78%;"></div>
+						<div class="bar" style="height: 76%;"></div>
+					</div>
+
+					<div class="kpi-row">
+						<div class="kpi">
+							<div class="kpi-k">Total Paid (Month)</div>
+							<div class="kpi-v" id="payMonth">₹9,80,000</div>
+						</div>
+						<div class="kpi">
+							<div class="kpi-k">Deductions</div>
+							<div class="kpi-v" id="payDed">₹1,20,000</div>
+						</div>
+						<div class="kpi">
+							<div class="kpi-k">Employees Paid</div>
+							<div class="kpi-v" id="payEmp">38</div>
+						</div>
+					</div>
+
+					<div class="report-actions">
+						<button class="btn-ghost" type="button" onclick="placeholderAction('Payroll', 'View')">View</button>
+						<button class="btn-ghost" type="button" onclick="placeholderAction('Payroll', 'Download')">Download</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="note-card">
+			These summaries are placeholders for a minimal analytics feel. Buttons are UI-only (no backend).
+		</div>
+	</div>
+
+	<script src="../../js/reports.js"></script>
+</body>
+</html>

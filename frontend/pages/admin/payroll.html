@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Payroll - DayFlow</title>
+
+	<!-- Reuse existing design tokens + navbar styles -->
+	<link rel="stylesheet" href="../../css/style.css" />
+	<link rel="stylesheet" href="../../css/admin-dashboard.css" />
+	<link rel="stylesheet" href="../../css/payroll.css" />
+</head>
+<body>
+	<!-- Navbar (same as admin dashboard) -->
+	<nav class="navbar">
+		<div class="navbar-left">
+			<img src="../../images/logo.png" alt="DayFlow Logo" style="height: 40px; width: auto;">
+		</div>
+
+		<div class="navbar-center">
+			<a href="dashboard.html" class="nav-tab">Employees</a>
+			<a href="attendance.html" class="nav-tab">Attendance</a>
+			<a href="leave-approval.html" class="nav-tab">Time Off</a>
+		</div>
+
+		<div class="navbar-right">
+			<div class="status-indicator">
+				<span class="status-dot online"></span>
+				<span>Active</span>
+			</div>
+
+			<div class="user-menu">
+				<div class="user-avatar" onclick="toggleDropdown()">AD</div>
+				<div class="dropdown-menu" id="userDropdown">
+					<a href="#" class="dropdown-item" onclick="goToProfile()">My Profile</a>
+					<a href="#" class="dropdown-item" onclick="logout()">Logout</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="page-header">
+			<h1 class="page-title">Payroll</h1>
+			<p class="page-subtitle">Professional payroll sheet preview <span class="pill admin">Admin Only</span></p>
+		</div>
+
+		<div class="access-banner" id="accessBanner">This page is admin-only.</div>
+
+		<div class="layout" id="payrollLayout">
+			<!-- Left: Employee salary overview -->
+			<div class="card">
+				<div class="card-header">
+					<h2 class="card-title">Employee Salary Overview</h2>
+					<p class="card-subtitle">Select an employee to view payroll breakup</p>
+				</div>
+				<div style="overflow:auto;">
+					<table class="employee-list" aria-label="Employee list">
+						<thead>
+							<tr>
+								<th>Employee</th>
+								<th style="text-align:right;">Monthly Wage</th>
+							</tr>
+						</thead>
+						<tbody id="employeeList"></tbody>
+					</table>
+				</div>
+			</div>
+
+			<!-- Right: Payroll sheet -->
+			<div class="card payroll-sheet">
+				<div class="card-header">
+					<h2 class="card-title" id="sheetTitle">Payroll Sheet</h2>
+					<p class="card-subtitle" id="sheetSubtitle">Read-only calculated salary components (dummy)</p>
+				</div>
+				<div class="card-body">
+					<div class="sheet-top">
+						<div class="summary-box">
+							<div class="summary-label">Monthly Wage</div>
+							<div class="summary-value primary" id="monthlyWage">₹0</div>
+						</div>
+						<div class="summary-box">
+							<div class="summary-label">Yearly Wage (CTC)</div>
+							<div class="summary-value" id="yearlyWage">₹0</div>
+						</div>
+					</div>
+
+					<div class="sheet-meta">
+						<div class="meta-item">
+							<div class="meta-k">Employee ID</div>
+							<div class="meta-v" id="empId">-</div>
+						</div>
+						<div class="meta-item">
+							<div class="meta-k">Department</div>
+							<div class="meta-v" id="empDept">-</div>
+						</div>
+						<div class="meta-item">
+							<div class="meta-k">Location</div>
+							<div class="meta-v" id="empLoc">-</div>
+						</div>
+					</div>
+
+					<table class="breakdown" aria-label="Payroll breakdown">
+						<thead>
+							<tr>
+								<th>Component</th>
+								<th>Type</th>
+								<th style="text-align:right;">Monthly Amount</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Basic</td>
+								<td>Earnings</td>
+								<td class="amount pos" id="basic">₹0</td>
+							</tr>
+							<tr>
+								<td>HRA</td>
+								<td>Earnings</td>
+								<td class="amount pos" id="hra">₹0</td>
+							</tr>
+							<tr>
+								<td>Allowances</td>
+								<td>Earnings</td>
+								<td class="amount pos" id="allowances">₹0</td>
+							</tr>
+							<tr>
+								<td>Bonus</td>
+								<td>Earnings</td>
+								<td class="amount pos" id="bonus">₹0</td>
+							</tr>
+							<tr>
+								<td>PF Contribution</td>
+								<td>Deduction</td>
+								<td class="amount neg" id="pf">- ₹0</td>
+							</tr>
+							<tr>
+								<td>Tax Deduction</td>
+								<td>Deduction</td>
+								<td class="amount neg" id="tax">- ₹0</td>
+							</tr>
+							<tr class="row-total">
+								<td><strong>Net Pay (Take Home)</strong></td>
+								<td><strong>Total</strong></td>
+								<td class="amount"><strong id="netPay">₹0</strong></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note">
+						Components are auto-calculated using fixed percentages (demo). Values update when you switch employees (wage changes via JS only). This sheet is read-only.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="../../js/payroll.js"></script>
+</body>
+</html>

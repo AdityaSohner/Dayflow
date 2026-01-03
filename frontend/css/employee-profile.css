@@ -1,0 +1,340 @@
+/* ===================================
+   Employee Profile Page Styles
+   =================================== */
+
+.profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.profile-header {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.profile-avatar-section {
+    position: relative;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+    font-weight: 600;
+}
+
+.edit-icon-disabled {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 35px;
+    height: 35px;
+    background: var(--gray-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.profile-basic-info {
+    flex: 1;
+}
+
+.profile-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+.profile-role {
+    color: var(--gray);
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.info-label {
+    font-size: 0.875rem;
+    color: var(--gray);
+    font-weight: 500;
+}
+
+.info-value {
+    font-size: 1rem;
+    color: var(--dark);
+    font-weight: 600;
+}
+
+/* Tabs Section */
+.tabs-container {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.tabs-header {
+    display: flex;
+    border-bottom: 2px solid var(--gray-lighter);
+    background: var(--gray-lighter);
+}
+
+.tab-button {
+    flex: 1;
+    padding: 1rem 2rem;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-button:hover {
+    background: var(--white);
+    color: var(--primary-color);
+}
+
+.tab-button.active {
+    background: var(--white);
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.tabs-content {
+    padding: 2rem;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Sections */
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gray-lighter);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.field-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gray);
+}
+
+.field-value {
+    padding: 0.75rem 1rem;
+    background: var(--gray-lighter);
+    border: 1px solid var(--gray-light);
+    border-radius: var(--radius);
+    color: var(--dark);
+    font-size: 1rem;
+    cursor: not-allowed;
+}
+
+/* Resume Section */
+.resume-content {
+    line-height: 1.8;
+    color: var(--dark);
+}
+
+.resume-content h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+}
+
+.resume-content ul {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Salary Table */
+.salary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.salary-table th,
+.salary-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--gray-lighter);
+}
+
+.salary-table th {
+    background: var(--gray-lighter);
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.salary-table tr:hover {
+    background: var(--gray-lighter);
+}
+
+.amount {
+    font-weight: 600;
+    color: var(--success);
+}
+
+.deduction {
+    color: var(--danger);
+}
+
+.total-row {
+    background: var(--primary-color) !important;
+    color: white !important;
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+.total-row td {
+    border-bottom: none;
+}
+
+.salary-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.summary-card {
+    padding: 1.5rem;
+    background: var(--gray-lighter);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--primary-color);
+}
+
+.summary-card.success {
+    border-left-color: var(--success);
+}
+
+.summary-label {
+    font-size: 0.875rem;
+    color: var(--gray);
+    margin-bottom: 0.5rem;
+}
+
+.summary-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+/* Read-only badge */
+.readonly-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--warning-light);
+    color: var(--warning);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: 1rem;
+}
+
+/* Back button */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.back-button:hover {
+    background: var(--primary-dark);
+    transform: translateX(-4px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tabs-header {
+        overflow-x: auto;
+    }
+
+    .tab-button {
+        white-space: nowrap;
+        min-width: 120px;
+    }
+}

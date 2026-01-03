@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Attendance - DayFlow</title>
+
+	<link rel="stylesheet" href="../../css/style.css" />
+	<link rel="stylesheet" href="../../css/admin-dashboard.css" />
+	<link rel="stylesheet" href="../../css/employee-attendance.css" />
+</head>
+
+<body>
+	<!-- Navbar (employee: limited tabs) -->
+	<nav class="navbar">
+		<div class="navbar-left">
+			<img src="../../images/logo.png" alt="DayFlow Logo" style="height: 40px; width: auto;">
+		</div>
+
+		<div class="navbar-center">
+			<a href="attendance.html" class="nav-tab active">Attendance</a>
+			<a href="leave.html" class="nav-tab">Time Off</a>
+		</div>
+
+		<div class="navbar-right">
+			<div class="status-indicator" aria-label="Attendance status">
+				<span class="status-dot offline" id="attendanceStatusDot"></span>
+				<span id="attendanceStatusText">Not checked in</span>
+			</div>
+
+			<div class="user-menu">
+				<div class="user-avatar" id="userAvatar" onclick="toggleDropdown()">EU</div>
+				<div class="dropdown-menu" id="userDropdown">
+					<a href="#" class="dropdown-item" onclick="goToProfile()">My Profile</a>
+					<a href="#" class="dropdown-item" onclick="logout()">Logout</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="access-banner" id="accessBanner">Access denied: Employee only.</div>
+
+		<div id="attendanceContent">
+			<div class="page-header">
+				<h1 class="page-title">My Attendance</h1>
+				<p class="page-subtitle">View your month-wise attendance records</p>
+			</div>
+
+			<!-- Top Controls -->
+			<div class="top-bar">
+				<div class="month-nav" aria-label="Month navigation">
+					<button class="month-btn" id="prevMonthBtn" type="button" aria-label="Previous month">
+						<span aria-hidden="true">←</span>
+						Prev
+					</button>
+					<div class="month-label" id="monthLabel">—</div>
+					<button class="month-btn" id="nextMonthBtn" type="button" aria-label="Next month">
+						Next
+						<span aria-hidden="true">→</span>
+					</button>
+				</div>
+
+				<div class="today-action">
+					<div class="today-pill" id="todayInfo">
+						<span>Today:</span>
+						<span class="mono">—</span>
+					</div>
+					<button class="btn btn-primary btn-sm today-btn" id="todayActionBtn" type="button">Check In</button>
+				</div>
+			</div>
+
+			<!-- Summary Cards (UI only) -->
+			<div class="summary-grid" aria-label="Monthly attendance summary">
+				<div class="summary-card">
+					<p class="summary-value" id="daysPresent">0</p>
+					<p class="summary-label">Days Present</p>
+				</div>
+				<div class="summary-card">
+					<p class="summary-value" id="daysAbsent">0</p>
+					<p class="summary-label">Days Absent</p>
+				</div>
+				<div class="summary-card">
+					<p class="summary-value" id="leavesTaken">0</p>
+					<p class="summary-label">Leaves Taken</p>
+				</div>
+				<div class="summary-card">
+					<p class="summary-value" id="workingDays">0</p>
+					<p class="summary-label">Total Working Days</p>
+				</div>
+			</div>
+
+			<!-- Attendance Table -->
+			<div class="table-card">
+				<table class="attendance-table" aria-label="Monthly attendance table">
+					<thead>
+						<tr>
+							<th style="width: 22%;">Date</th>
+							<th style="width: 18%;">Check In Time</th>
+							<th style="width: 18%;">Check Out Time</th>
+							<th style="width: 21%;">Work Hours</th>
+							<th style="width: 21%;">Extra Hours</th>
+						</tr>
+					</thead>
+					<tbody id="attendanceBody">
+						<tr>
+							<td colspan="5" class="mono" style="padding: 1.25rem; color: var(--gray);">Loading...</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<!-- Info Text -->
+			<div class="note-card">
+				<p class="note-text">Attendance records are used for payroll calculation.</p>
+			</div>
+		</div>
+	</div>
+
+	<script src="../../js/auth.js"></script>
+	<script src="../../js/employee-attendance.js"></script>
+</body>
+</html>

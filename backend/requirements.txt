@@ -1,14 +1,16 @@
-# Core framework-
+# Core framework
 fastapi
 uvicorn
+pydantic[email]
 
-# Database (Supabase PostgreSQL)-
+# Database (Supabase PostgreSQL)
 sqlalchemy
 psycopg2-binary
 
-# Environment variables-
+# Environment variables
 python-dotenv
 
-# Auth (future use)-
-python-jose
+# Authentication & Security
+python-jose[cryptography]
 passlib[bcrypt]
+PyJWT

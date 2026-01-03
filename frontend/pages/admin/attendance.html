@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Attendance - DayFlow</title>
+
+	<!-- Reuse existing design tokens + navbar styles -->
+	<link rel="stylesheet" href="../../css/style.css">
+	<link rel="stylesheet" href="../../css/admin-dashboard.css">
+	<link rel="stylesheet" href="../../css/attendance.css">
+</head>
+<body>
+	<!-- Navbar (same as admin dashboard; Attendance active) -->
+	<nav class="navbar">
+		<div class="navbar-left">
+			<img src="../../images/logo.png" alt="DayFlow Logo" style="height: 40px; width: auto;">
+		</div>
+
+		<div class="navbar-center">
+			<a href="dashboard.html" class="nav-tab">Employees</a>
+			<a href="attendance.html" class="nav-tab active">Attendance</a>
+			<a href="leave-approval.html" class="nav-tab">Time Off</a>
+		</div>
+
+		<div class="navbar-right">
+			<div class="status-indicator">
+				<span class="status-dot online"></span>
+				<span>Active</span>
+			</div>
+
+			<div class="user-menu">
+				<div class="user-avatar" onclick="toggleDropdown()">AD</div>
+				<div class="dropdown-menu" id="userDropdown">
+					<a href="#" class="dropdown-item" onclick="goToProfile()">My Profile</a>
+					<a href="#" class="dropdown-item" onclick="logout()">Logout</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="page-header">
+			<h1 class="page-title">Attendance List</h1>
+			<p class="page-subtitle">Admin/HR can view attendance of all employees</p>
+		</div>
+
+		<div class="access-banner" id="accessBanner">
+			Access denied: This page is for Admin/HR only.
+		</div>
+
+		<div id="attendanceContent">
+
+		<!-- Top Controls -->
+		<div class="controls-bar">
+			<div class="controls-left">
+				<div class="search-container" style="margin-bottom: 0; width: 100%;">
+					<input
+						type="text"
+						id="searchInput"
+						class="search-input"
+						placeholder="Search employee name..."
+						autocomplete="off"
+					>
+				</div>
+			</div>
+
+			<div class="controls-right">
+				<div class="page-tabs admin-only" id="attendanceAdminNav" role="tablist" aria-label="Attendance pages">
+					<a class="page-tab active" href="attendance.html" aria-current="page">Attendance List</a>
+					<a class="page-tab" href="attendance-approval.html">Attendance Approval</a>
+				</div>
+
+				<div class="date-nav" aria-label="Date navigation">
+					<button class="date-btn" id="prevBtn" type="button" aria-label="Previous">
+						<span aria-hidden="true">←</span>
+						Prev
+					</button>
+					<div class="date-label" id="dateLabel">-</div>
+					<button class="date-btn" id="nextBtn" type="button" aria-label="Next">
+						Next
+						<span aria-hidden="true">→</span>
+					</button>
+				</div>
+
+				<div class="view-toggle" role="tablist" aria-label="Attendance view toggle">
+					<button class="toggle-btn active" id="dayToggle" type="button">Day</button>
+					<button class="toggle-btn" id="monthToggle" type="button">Month</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Day view table -->
+		<div class="table-card" id="dayView">
+			<table class="attendance-table" aria-label="Daily attendance table">
+				<thead>
+					<tr>
+						<th style="width: 30%;">Employee Name</th>
+						<th style="width: 14%;">Check In Time</th>
+						<th style="width: 14%;">Check Out Time</th>
+						<th style="width: 14%;">Work Hours</th>
+						<th style="width: 14%;">Extra Hours</th>
+					</tr>
+				</thead>
+				<tbody id="attendanceBody"></tbody>
+			</table>
+		</div>
+
+		<!-- Month view summary -->
+		<div class="table-card hidden" id="monthView" style="margin-top: 0;">
+			<table class="attendance-table" aria-label="Monthly attendance summary table">
+				<thead>
+					<tr>
+						<th style="width: 30%;">Employee Name</th>
+						<th style="width: 14%;">Check In Time</th>
+						<th style="width: 14%;">Check Out Time</th>
+						<th style="width: 14%;">Work Hours</th>
+						<th style="width: 14%;">Extra Hours</th>
+					</tr>
+				</thead>
+				<tbody id="monthBody"></tbody>
+			</table>
+		</div>
+
+		<!-- Note (UI Text) -->
+		<div class="note-card">
+			<div class="note-title">Note</div>
+			<div class="note-text">
+				<ul class="note-list">
+					<li>Attendance records are used for payroll calculation.</li>
+					<li>Missing or unpaid attendance reduces payable days.</li>
+					<li>Admin/HR can view attendance of absent employees as well.</li>
+				</ul>
+			</div>
+		</div>
+		</div>
+	</div>
+
+	<script src="../../js/attendance.js"></script>
+</body>
+</html>

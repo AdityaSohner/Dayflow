@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Employee Dashboard - DayFlow</title>
+
+	<link rel="stylesheet" href="../../css/style.css" />
+	<link rel="stylesheet" href="../../css/admin-dashboard.css" />
+	<link rel="stylesheet" href="../../css/employee-dashboard.css" />
+</head>
+
+<body>
+	<!-- Navbar (employee: limited tabs) -->
+	<nav class="navbar">
+		<div class="navbar-left">
+			<img src="../../images/logo.png" alt="DayFlow Logo" style="height: 40px; width: auto;">
+		</div>
+
+		<div class="navbar-center">
+			<a href="attendance.html" class="nav-tab">Attendance</a>
+			<a href="leave.html" class="nav-tab">Time Off</a>
+		</div>
+
+		<div class="navbar-right">
+			<div class="status-indicator" aria-label="Attendance status">
+				<span class="status-dot offline" id="attendanceStatusDot"></span>
+				<span id="attendanceStatusText">Not checked in</span>
+			</div>
+
+			<div class="user-menu">
+				<div class="user-avatar" id="userAvatar" onclick="toggleDropdown()">EU</div>
+				<div class="dropdown-menu" id="userDropdown">
+					<a href="#" class="dropdown-item" onclick="goToProfile()">My Profile</a>
+					<a href="#" class="dropdown-item" onclick="logout()">Logout</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="access-banner" id="accessBanner">Access denied: Employee only.</div>
+
+		<div id="employeeDashboardContent">
+			<!-- Welcome -->
+			<div class="welcome">
+				<h1 class="welcome-title">Welcome, <span id="employeeName">Employee</span></h1>
+				<p class="welcome-subtitle" id="todayDate">—</p>
+			</div>
+
+			<!-- Action Cards -->
+			<div class="cards-grid">
+				<!-- Attendance -->
+				<div class="card">
+					<div class="card-header">
+						<h2 class="card-title">Attendance</h2>
+					</div>
+					<div class="card-body">
+						<div class="kv">
+							<div class="kv-item">
+								<div class="kv-label">Today’s Status</div>
+								<div class="kv-value" id="todayStatus">Not checked in</div>
+							</div>
+							<div class="kv-row">
+								<div class="kv-item">
+									<div class="kv-label">Check In</div>
+									<div class="kv-meta" id="todayCheckIn">—</div>
+								</div>
+								<div class="kv-item">
+									<div class="kv-label">Check Out</div>
+									<div class="kv-meta" id="todayCheckOut">—</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-footer">
+						<button class="btn btn-primary btn-full" id="attendanceActionBtn" type="button">Check In</button>
+					</div>
+				</div>
+
+				<!-- Payroll -->
+				<div class="card">
+					<div class="card-header">
+						<h2 class="card-title">Payroll</h2>
+					</div>
+					<div class="card-body">
+						<div class="kv">
+							<div class="kv-row">
+								<div class="kv-item">
+									<div class="kv-label">Monthly Wage</div>
+									<div class="kv-value" id="monthlyWage">—</div>
+								</div>
+								<div class="kv-item">
+									<div class="kv-label">Last Processed</div>
+									<div class="kv-meta" id="lastSalaryDate">—</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-footer">
+						<button class="btn btn-outline btn-full" id="viewPayrollBtn" type="button">View Payroll</button>
+					</div>
+				</div>
+
+				<!-- Time Off -->
+				<div class="card">
+					<div class="card-header">
+						<h2 class="card-title">Time Off</h2>
+					</div>
+					<div class="card-body">
+						<div class="kv">
+							<div class="kv-row">
+								<div class="kv-item">
+									<div class="kv-label">Remaining Paid Leave</div>
+									<div class="kv-value" id="paidLeave">—</div>
+								</div>
+								<div class="kv-item">
+									<div class="kv-label">Remaining Sick Leave</div>
+									<div class="kv-value" id="sickLeave">—</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-footer">
+						<button class="btn btn-secondary btn-full" id="requestLeaveBtn" type="button">Request Time Off</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="../../js/auth.js"></script>
+	<script src="../../js/employee-dashboard.js"></script>
+</body>
+</html>

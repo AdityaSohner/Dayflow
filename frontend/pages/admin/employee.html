@@ -3,16 +3,122 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Employees - DayFlow</title>
-	<meta http-equiv="refresh" content="0; url=dashboard.html">
-	<script>
-		window.location.replace('dashboard.html');
-	</script>
+	<title>Employee - DayFlow</title>
+	<link rel="stylesheet" href="../../css/style.css">
+	<link rel="stylesheet" href="../../css/admin-dashboard.css">
+	<link rel="stylesheet" href="../../css/employee-profile-view.css">
+	<link rel="stylesheet" href="../../css/employee-profile.css">
 </head>
 <body>
-	Redirecting to <a href="dashboard.html">dashboard</a>...
-</body>
-</html>
+	<!-- Navbar -->
+	<nav class="navbar">
+		<div class="navbar-left">
+			<img src="../../images/logo.png" alt="DayFlow Logo" style="height: 40px; width: auto;">
+		</div>
+
+		<div class="navbar-center">
+			<a href="dashboard.html" class="nav-tab">Employees</a>
+			<a href="attendance.html" class="nav-tab">Attendance</a>
+			<a href="leave-approval.html" class="nav-tab">Time Off</a>
+		</div>
+
+		<div class="navbar-right">
+			<div class="status-indicator">
+				<span class="status-dot online"></span>
+				<span>Active</span>
+			</div>
+
+			<div class="user-menu">
+				<div class="user-avatar" onclick="toggleDropdown()">AD</div>
+				<div class="dropdown-menu" id="userDropdown">
+					<a href="#" class="dropdown-item" onclick="goToProfile()">My Profile</a>
+					<a href="#" class="dropdown-item" onclick="logout()">Logout</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Main Content (Primary) -->
+	<div class="profile-wrapper">
+		<a href="dashboard.html" class="back-btn">
+			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<line x1="19" y1="12" x2="5" y2="12"></line>
+				<polyline points="12 19 5 12 12 5"></polyline>
+			</svg>
+			Back to Employees
+		</a>
+
+		<div class="profile-header-card">
+			<div class="avatar-section">
+				<div class="profile-pic" id="empAvatar">RK</div>
+				<div class="edit-icon" title="Editing disabled - View only mode">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+						<path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+					</svg>
+				</div>
+			</div>
+
+			<div class="basic-details">
+				<div class="detail-item">
+					<span class="detail-label">Name</span>
+					<span class="detail-value" id="empName">-</span>
+				</div>
+				<div class="detail-item">
+					<span class="detail-label">Login ID</span>
+					<span class="detail-value" id="empLoginId">-</span>
+				</div>
+				<div class="detail-item">
+					<span class="detail-label">Email</span>
+					<span class="detail-value" id="empEmail">-</span>
+				</div>
+				<div class="detail-item">
+					<span class="detail-label">Mobile</span>
+					<span class="detail-value" id="empMobile">-</span>
+				</div>
+				<div class="detail-item">
+					<span class="detail-label">Company</span>
+					<span class="detail-value" id="empCompany">-</span>
+				</div>
+				<div class="detail-item">
+					<span class="detail-label">Department</span>
+					<span class="detail-value" id="empDepartment">-</span>
+				</div>
+				<div class="detail-item">
+					<span class="detail-label">Manager</span>
+					<span class="detail-value" id="empManager">-</span>
+				</div>
+				<div class="detail-item">
+					<span class="detail-label">Location</span>
+					<span class="detail-value" id="empLocation">-</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="profile-tabs-container">
+			<div class="tabs-nav">
+				<button class="tab-btn active" onclick="switchTab('resume', event)">Resume</button>
+				<button class="tab-btn" onclick="switchTab('private', event)">Private Info</button>
+				<button class="tab-btn" onclick="switchTab('salary', event)">Salary Info</button>
+			</div>
+
+			<div class="tab-content-area">
+				<div class="tab-panel active" id="resume-tab">
+					<div class="profile-section">
+						<h2 class="section-heading">Professional Summary</h2>
+						<p class="resume-text">Experienced Senior Developer with 8+ years in full-stack development, specializing in modern web technologies and cloud infrastructure. Proven track record of leading development teams and delivering high-quality software solutions.</p>
+					</div>
+
+					<div class="profile-section">
+						<h2 class="section-heading">Work Experience</h2>
+						<div class="resume-text">
+							<ul>
+								<li><strong>Senior Developer</strong> - DayFlow Technologies (2021 - Present)</li>
+								<li><strong>Full Stack Developer</strong> - Tech Solutions Inc (2018 - 2021)</li>
+								<li><strong>Junior Developer</strong> - StartUp Labs (2016 - 2018)</li>
+							</ul>
+						</div>
+					</div>
 
 					<div class="profile-section">
 						<h2 class="section-heading">Education</h2>

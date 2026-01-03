@@ -1,0 +1,242 @@
+/* Payroll (Admin-only) - page-specific styles */
+.layout {
+	display: grid;
+	grid-template-columns: 360px 1fr;
+	gap: 1.5rem;
+	align-items: start;
+}
+
+.card {
+	background: var(--white);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-sm);
+	overflow: hidden;
+}
+
+.card-header {
+	padding: 1.25rem 1.25rem 1rem;
+	border-bottom: 1px solid var(--gray-lighter);
+}
+
+.card-title {
+	margin: 0;
+	font-size: 1.125rem;
+	font-weight: 900;
+	color: var(--dark);
+}
+
+.card-subtitle {
+	margin: 0.25rem 0 0;
+	color: var(--gray);
+	font-size: 0.95rem;
+}
+
+.card-body {
+	padding: 1.25rem;
+}
+
+.employee-list {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.employee-list th,
+.employee-list td {
+	padding: 0.85rem 1rem;
+	border-bottom: 1px solid var(--gray-lighter);
+	text-align: left;
+}
+
+.employee-list th {
+	background: var(--gray-lighter);
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+	font-weight: 900;
+	color: var(--dark);
+}
+
+.employee-row {
+	cursor: pointer;
+	transition: var(--transition);
+}
+
+.employee-row:hover {
+	background: var(--gray-lighter);
+}
+
+.employee-row.active {
+	background: var(--primary-color);
+	color: var(--white);
+}
+
+.employee-row.active td {
+	border-bottom-color: rgba(255,255,255,0.2);
+}
+
+.pill {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.2rem 0.65rem;
+	border-radius: 999px;
+	font-size: 0.75rem;
+	font-weight: 900;
+	text-transform: uppercase;
+	border: 1px solid var(--gray-light);
+	background: var(--gray-lighter);
+	color: var(--dark);
+}
+
+.pill.admin {
+	border-color: var(--primary-color);
+	color: var(--primary-color);
+	background: rgba(99, 102, 241, 0.12);
+}
+
+.payroll-sheet {
+	border-radius: var(--radius-lg);
+}
+
+.sheet-top {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+.summary-box {
+	background: var(--gray-lighter);
+	border: 1px solid var(--gray-light);
+	border-radius: var(--radius-lg);
+	padding: 1rem;
+}
+
+.summary-label {
+	color: var(--gray);
+	font-weight: 800;
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+	margin-bottom: 0.35rem;
+}
+
+.summary-value {
+	font-size: 1.75rem;
+	font-weight: 950;
+	color: var(--dark);
+	font-variant-numeric: tabular-nums;
+}
+
+.summary-value.primary {
+	color: var(--primary-color);
+}
+
+.sheet-meta {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+.meta-item {
+	padding: 0.9rem 1rem;
+	border-radius: var(--radius-lg);
+	background: var(--white);
+	border: 1px solid var(--gray-lighter);
+}
+
+.meta-k {
+	color: var(--gray);
+	font-weight: 800;
+	font-size: 0.8rem;
+	text-transform: uppercase;
+}
+
+.meta-v {
+	margin-top: 0.25rem;
+	font-weight: 900;
+	color: var(--dark);
+	font-variant-numeric: tabular-nums;
+}
+
+.breakdown {
+	width: 100%;
+	border-collapse: collapse;
+	overflow: hidden;
+	border-radius: var(--radius-lg);
+	border: 1px solid var(--gray-lighter);
+}
+
+.breakdown th,
+.breakdown td {
+	padding: 0.95rem 1rem;
+	border-bottom: 1px solid var(--gray-lighter);
+	text-align: left;
+}
+
+.breakdown th {
+	background: var(--gray-lighter);
+	font-weight: 950;
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+}
+
+.breakdown td.amount {
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+	font-weight: 900;
+}
+
+.pos {
+	color: var(--success);
+}
+
+.neg {
+	color: var(--danger);
+}
+
+.row-total {
+	background: var(--primary-color);
+	color: var(--white);
+}
+
+.row-total td {
+	border-bottom: none;
+}
+
+.note {
+	margin-top: 1rem;
+	padding: 1rem 1.25rem;
+	border-radius: var(--radius-lg);
+	background: var(--white);
+	border-left: 5px solid var(--primary-color);
+	box-shadow: var(--shadow-sm);
+	color: var(--gray);
+	line-height: 1.6;
+}
+
+.access-banner {
+	display: none;
+	background: var(--danger-light);
+	border: 1px solid var(--danger);
+	border-radius: var(--radius-lg);
+	padding: 1rem 1.25rem;
+	margin-bottom: 1rem;
+	color: var(--danger);
+	font-weight: 900;
+}
+
+@media (max-width: 1050px) {
+	.layout {
+		grid-template-columns: 1fr;
+	}
+
+	.sheet-top {
+		grid-template-columns: 1fr;
+	}
+
+	.sheet-meta {
+		grid-template-columns: 1fr;
+	}
+}

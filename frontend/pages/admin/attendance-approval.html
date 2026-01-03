@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Attendance Approval - DayFlow</title>
+
+	<link rel="stylesheet" href="../../css/style.css">
+	<link rel="stylesheet" href="../../css/admin-dashboard.css">
+	<link rel="stylesheet" href="../../css/attendance-approval.css">
+</head>
+
+<body>
+	<!-- Navbar -->
+	<nav class="navbar">
+		<div class="navbar-left">
+			<img src="../../images/logo.png" alt="DayFlow Logo" style="height: 40px; width: auto;">
+		</div>
+
+		<div class="navbar-center">
+			<a href="dashboard.html" class="nav-tab">Employees</a>
+			<a href="attendance.html" class="nav-tab active">Attendance</a>
+			<a href="leave-approval.html" class="nav-tab">Time Off</a>
+		</div>
+
+		<div class="navbar-right">
+			<div class="status-indicator">
+				<span class="status-dot online"></span>
+				<span>Attendance</span>
+			</div>
+
+			<div class="user-menu">
+				<div class="user-avatar" onclick="toggleDropdown()">AD</div>
+				<div class="dropdown-menu" id="userDropdown">
+					<a href="#" class="dropdown-item" onclick="goToProfile()">My Profile</a>
+					<a href="#" class="dropdown-item" onclick="logout()">Logout</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="page-header">
+			<h1 class="page-title">Attendance Approval</h1>
+			<p class="page-subtitle">Review and approve/reject attendance entries (Admin/HR only)</p>
+		</div>
+
+		<div class="access-banner" id="accessBanner">
+			Access denied: This page is for Admin/HR only.
+		</div>
+
+		<div class="top-controls" id="mainCard">
+			<div class="controls-left">
+				<div class="search-container" style="margin-bottom: 0; width: 100%;">
+					<input
+						type="text"
+						id="searchInput"
+						class="search-input"
+						placeholder="Search employee name..."
+						autocomplete="off"
+					>
+				</div>
+			</div>
+
+			<div class="controls-right">
+				<div class="page-tabs admin-only" id="attendanceAdminNav" role="tablist" aria-label="Attendance pages">
+					<a class="page-tab" href="attendance.html">Attendance List</a>
+					<a class="page-tab active" href="attendance-approval.html" aria-current="page">Attendance Approval</a>
+				</div>
+
+				<div class="date-filter">
+					<label class="filter-label" for="dateFilter">Date</label>
+					<input type="date" id="dateFilter" class="date-input">
+					<button class="btn-clear" type="button" id="clearDateBtn">Clear</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="table-card" id="tableCard">
+			<table class="approval-table" aria-label="Attendance approval table">
+				<thead>
+					<tr>
+						<th>Employee Name</th>
+						<th>Date</th>
+						<th>Check In Time</th>
+						<th>Check Out Time</th>
+						<th>Work Hours</th>
+						<th>Status</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody id="approvalBody">
+					<tr>
+						<td colspan="7" class="empty">Loading...</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="note-card">
+			<div class="note-title">Note</div>
+			<div class="note-text">
+				This is a UI-only approval flow. Approve/Reject only updates the badge visually and disables actions for that entry.
+			</div>
+		</div>
+	</div>
+
+	<script src="../../js/attendance-approval.js"></script>
+</body>
+</html>

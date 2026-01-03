@@ -1,0 +1,211 @@
+/* Employee Attendance (DayFlow) - page-specific styles */
+
+.top-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	flex-wrap: wrap;
+	margin: 1.5rem 0 1rem;
+}
+
+.month-nav {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0.5rem;
+	border-radius: var(--radius-md);
+	background: var(--white);
+	box-shadow: var(--shadow-sm);
+}
+
+.month-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.6rem 0.9rem;
+	border: 1px solid var(--gray-light);
+	background: var(--white);
+	border-radius: var(--radius);
+	cursor: pointer;
+	font-weight: 700;
+	color: var(--dark);
+	transition: var(--transition);
+}
+
+.month-btn:hover {
+	border-color: var(--primary-color);
+	color: var(--primary-color);
+}
+
+.month-label {
+	min-width: 220px;
+	text-align: center;
+	font-weight: 900;
+	color: var(--dark);
+}
+
+.today-action {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+}
+
+.today-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 0.75rem;
+	border-radius: 999px;
+	background: var(--gray-lighter);
+	border: 1px solid var(--gray-light);
+	font-weight: 800;
+	color: var(--dark);
+}
+
+.today-pill .mono {
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+.today-btn {
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+.summary-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: var(--spacing-lg);
+	margin-bottom: var(--spacing-xl);
+}
+
+.summary-card {
+	background: var(--white);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-sm);
+	padding: var(--spacing-xl);
+	position: relative;
+	overflow: hidden;
+}
+
+.summary-card::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 4px;
+	height: 100%;
+	background: var(--primary-gradient);
+}
+
+.summary-value {
+	font-size: 2rem;
+	font-weight: 900;
+	color: var(--dark);
+	margin: 0;
+	font-variant-numeric: tabular-nums;
+}
+
+.summary-label {
+	margin: 0.25rem 0 0;
+	color: var(--gray);
+	font-weight: 700;
+}
+
+.table-card {
+	background: var(--white);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-sm);
+	overflow: hidden;
+}
+
+.attendance-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.attendance-table th,
+.attendance-table td {
+	padding: 1rem;
+	border-bottom: 1px solid var(--gray-lighter);
+	text-align: left;
+	vertical-align: middle;
+}
+
+.attendance-table th {
+	background: var(--gray-lighter);
+	font-size: 0.85rem;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	color: var(--dark);
+	font-weight: 900;
+}
+
+.attendance-table tr:hover {
+	background: var(--gray-lighter);
+}
+
+.mono {
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+.today-row {
+	background: rgba(99, 102, 241, 0.06);
+}
+
+.badge-today {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.2rem 0.6rem;
+	border-radius: 999px;
+	font-size: 0.75rem;
+	font-weight: 900;
+	text-transform: uppercase;
+	margin-left: 0.5rem;
+	border: 1px solid var(--primary-color);
+	color: var(--primary-color);
+	background: rgba(99, 102, 241, 0.10);
+}
+
+.hours-ok { color: var(--success); font-weight: 900; }
+.hours-missing { color: var(--danger); font-weight: 900; }
+
+.note-card {
+	margin-top: 1rem;
+	background: var(--white);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-sm);
+	padding: 1.25rem;
+	border-left: 5px solid var(--primary-color);
+}
+
+.note-text {
+	color: var(--gray);
+	font-weight: 700;
+	margin: 0;
+}
+
+.access-banner {
+	display: none;
+	background: var(--danger-light);
+	border: 1px solid var(--danger);
+	border-radius: var(--radius-lg);
+	padding: 1rem 1.25rem;
+	margin: 1rem 0;
+	color: var(--danger);
+	font-weight: 900;
+}
+
+@media (max-width: 900px) {
+	.month-label { min-width: 160px; }
+	.attendance-table th,
+	.attendance-table td { padding: 0.85rem; }
+}
+
+@media (max-width: 650px) {
+	.month-nav { width: 100%; justify-content: space-between; }
+	.month-label { min-width: unset; flex: 1; }
+}
