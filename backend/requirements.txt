@@ -13,4 +13,9 @@ python-dotenv
 # Authentication & Security
 python-jose[cryptography]
 passlib[bcrypt]
+<<<<<<< HEAD
 PyJWT
+=======
+
+pydantic[email]
+>>>>>>> d84000d7c096f156e71cba7eafa99c7359a1099b
