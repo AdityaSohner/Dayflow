@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Setup - Dayflow</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <main class="register-section">
+        <div class="register-container">
+            <div class="register-box">
+                <div class="logo" style="justify-content: center; margin-bottom: 1.5rem;">
+                    <img src="../../images/logo2.png" alt="Dayflow Logo" style="max-width: 120px; height: auto;">
+                </div>
+                <h2>Sign Up</h2>
+                <p class="register-subtitle">Create your company account</p>
+                <form action="" method="post" class="register-form" id="company-setup-form" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="company-name">Company Name :-</label>
+                        <div style="position: relative;">
+                            <input type="text" name="company-name" id="company-name" placeholder="Enter your company name" required>
+                            <button type="button" onclick="document.getElementById('company-logo-input').click()" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: var(--primary-color); color: white; border: none; padding: 8px 12px; border-radius: var(--radius-sm); cursor: pointer; font-size: 1rem;">
+                                📤
+                            </button>
+                            <input type="file" id="company-logo-input" name="company-logo" accept="image/*" style="display: none;">
+                        </div>
+                        <small style="color: var(--gray); font-size: 0.85rem; margin-top: 4px; display: block;">Upload company logo (optional)</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name">Name :-</label>
+                        <input type="text" name="name" id="name" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email :-</label>
+                        <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone :-</label>
+                        <input type="tel" name="phone" id="phone" placeholder="Enter your phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password :-</label>
+                        <div style="position: relative;">
+                            <input type="password" name="password" id="password" placeholder="Create password" required>
+                            <button type="button" onclick="togglePassword('password', this)" class="password-toggle" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--gray); padding: 4px;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password :-</label>
+                        <div style="position: relative;">
+                            <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm password" required>
+                            <button type="button" onclick="togglePassword('confirm-password', this)" class="password-toggle" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--gray); padding: 4px;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">Sign Up</button>
+                    
+                    <div class="register-footer">
+                        <p>Already have an account? <a href="login.html">Sign In</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function togglePassword(inputId, button) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                button.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>`;
+            } else {
+                input.type = 'password';
+                button.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>`;
+            }
+        }
+
+        // Display selected file name for company logo
+        document.getElementById('company-logo-input').addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                const fileName = e.target.files[0].name;
+                alert('Selected: ' + fileName);
+            }
+        });
+
+        // Password validation
+        const form = document.querySelector('.register-form');
+        form.addEventListener('submit', function(e) {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert('Passwords do not match!');
+            }
+        });
+    </script>
+</body>
+</html>
